@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: conditional-tracer-enabled
+  labels:
+    tracer: enabled
+spec:
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    group: com.example
+    project: conditional-tracer
+    tracer: enabled
+  type: ClusterIP

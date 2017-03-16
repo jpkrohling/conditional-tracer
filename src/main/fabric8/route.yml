@@ -3,8 +3,11 @@ kind: Route
 metadata:
   name: conditional-tracer
 spec:
-  port:
-    targetPort: 8080
+  alternateBackends:
+  - kind: Service
+    name: conditional-tracer-disabled
+    weight: 80
   to:
     kind: Service
-    name: conditional-tracer
+    name: conditional-tracer-enabled
+    weight: 20

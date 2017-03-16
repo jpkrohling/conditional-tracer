@@ -15,8 +15,6 @@
         <groupId>io.fabric8</groupId>
         <configuration>
           <redeploy>true</redeploy>
-          
-          
         </configuration>
         <version>1.0.1</version>
         <executions>
@@ -87,6 +85,32 @@
     <dependency>
       <groupId>io.vertx</groupId>
       <artifactId>vertx-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hawkular.apm</groupId>
+      <artifactId>hawkular-apm-client-opentracing</artifactId>
+      <version>0.14.2.Final</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.hawkular.apm</groupId>
+      <artifactId>hawkular-apm-trace-publisher-rest-client</artifactId>
+      <version>0.14.2.Final</version>
     </dependency>
   </dependencies>
   <dependencyManagement>

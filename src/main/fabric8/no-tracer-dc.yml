@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    group: com.example
+    project: conditional-tracer
+    tracer: disabled
+  name: conditional-tracer-disabled
+spec:
+  replicas: 1
+  selector:
+    group: com.example
+    project: conditional-tracer
+    tracer: disabled
+  template:
+    metadata:
+      labels:
+        group: com.example
+        project: conditional-tracer
+        tracer: disabled
+    spec:
+      containers:
+      - env:
+        - name: HAWKULAR_APM_URI
+          value: http://hawkular-apm
+        - name: HAWKULAR_APM_USERNAME
+          value: admin
+        - name: HAWKULAR_APM_PASSWORD
+          value: password
+        - name: HAWKULAR_APM_ENABLED
+          value: false
+        - name: JAVA_APP_DIR
+          value: /deployments
+        - name: JAVA_MAIN_CLASS
+          value: io.vertx.core.Launcher
+        name: java-exec
+        ports:
+        - containerPort: 8080
+          name: http
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - java-exec
+      from:
+        kind: ImageStreamTag
+        name: conditional-tracer:latest
+    type: ImageChange
