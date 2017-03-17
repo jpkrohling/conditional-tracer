@@ -27,7 +27,7 @@ spec:
           value: admin
         - name: HAWKULAR_APM_PASSWORD
           value: password
-        - name: HAWKULAR_APM_ENABLED
+        - name: TRACER_ENABLED
           value: false
         - name: JAVA_APP_DIR
           value: /deployments
